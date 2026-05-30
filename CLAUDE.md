@@ -2,20 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## GitHub Sync
+## Sincronização com GitHub
 
-This project is connected to a private GitHub repository at https://github.com/Rodrygo09/lowticket-hills01.
+Este projeto está conectado ao repositório privado https://github.com/Rodrygo09/lowticket-hills01.
 
-**Every change made to files in this project must be committed and pushed automatically.** After creating or modifying any file, run:
+O sync é automático via hook configurado em `.claude/settings.local.json`. A cada arquivo criado ou editado, o Claude Code executa automaticamente:
 
 ```powershell
-Set-Location "C:\Users\USER\Desktop\LowTicket - Hills"
 git add .
-git commit -m "<concise description of what changed>"
+git commit -m "sincronizando: arquivos atualizados"
 git push origin main
 ```
 
-Use `& "C:\Program Files\GitHub CLI\gh.exe"` if `gh` is not in PATH. Git itself is available directly via `git`.
+Se `gh` não estiver no PATH, usar: `& "C:\Program Files\GitHub CLI\gh.exe"`
 
 ## Project Purpose
 
