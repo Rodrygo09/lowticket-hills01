@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="Para mães de bebês de 0 a 2 anos que acordam várias vezes à noite. Método Noites em Paz 3R™ — pare de resolver a madrugada no susto.">
   <title>Das Noites em Caos às Noites em Paz | Método 3R™</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,375 +10,423 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: #1A1A3A; background: #fff; line-height: 1.7; font-size: 16px; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1A1A3A;
+      background: #fff;
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
     img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; }
+    a { text-decoration: none; -webkit-tap-highlight-color: transparent; }
 
     :root {
-      --purple:     #2B0FA8;
-      --purple-dark:#1A0075;
-      --pink:       #D4006F;
-      --lav-bg:     #EEE9FF;
-      --pink-bg:    #FFE5F3;
-      --navy:       #150060;
-      --text:       #1A1A3A;
-      --white:      #FFFFFF;
-      --radius:     12px;
-      --shadow-sm:  0 2px 8px rgba(43,15,168,0.08);
-      --shadow-md:  0 6px 24px rgba(43,15,168,0.12);
+      --purple:      #2B0FA8;
+      --purple-dark: #1A0075;
+      --pink:        #D4006F;
+      --lav-bg:      #EEE9FF;
+      --pink-bg:     #FFE5F3;
+      --navy:        #150060;
+      --radius:      14px;
+      --shadow:      0 4px 20px rgba(43,15,168,0.10);
     }
 
-    /* ─── UTILS ─── */
-    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+    /* ── CONTAINER ── */
+    .wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 0 18px; }
+
+    /* ── BOTÃO ── */
     .btn {
-      display: inline-block;
+      display: block;
+      width: 100%;
       background: linear-gradient(135deg, #3314C0, var(--purple));
-      color: #fff; font-size: 15px; font-weight: 800; letter-spacing: 1px;
-      text-transform: uppercase; padding: 17px 38px; border-radius: 8px;
-      cursor: pointer; border: none;
-      transition: transform 0.18s, box-shadow 0.18s;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
       text-align: center;
-      box-shadow: 0 4px 18px rgba(43,15,168,0.30);
+      padding: 18px 24px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 22px rgba(43,15,168,0.32);
+      min-height: 56px;
+      line-height: 1.3;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(43,15,168,0.38); }
-    .btn:active { transform: translateY(0); }
-    .btn-block { display: block; width: 100%; }
-    .btn-lg { font-size: 16px; padding: 19px 44px; }
-    .dot { color: var(--purple); margin-right: 6px; font-size: 16px; line-height: 1; flex-shrink: 0; }
+    .btn:active { transform: scale(0.98); }
+
+    .btn-pink {
+      background: linear-gradient(135deg, #E8007A, var(--pink));
+      box-shadow: 0 6px 22px rgba(212,0,111,0.30);
+    }
+
+    .dot  { color: var(--purple); flex-shrink: 0; font-size: 10px; margin-top: 5px; }
     .dot-pink { color: var(--pink); }
 
-    /* ─── 1. HERO ─── */
+    /* ════════════════════════════
+       1. HERO
+    ════════════════════════════ */
     .hero {
-      background: linear-gradient(160deg, #FAFAFF 0%, #F5F0FF 100%);
-      padding: 52px 24px 48px;
+      background: linear-gradient(170deg, #F5F0FF 0%, #FFF0F8 100%);
+      padding: 28px 0 36px;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
-      content: '';
-      position: absolute; top: -80px; right: -80px;
-      width: 280px; height: 280px;
-      background: #FFCCE6; border-radius: 50%; opacity: 0.45;
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -60px; left: -60px;
+      content: ''; position: absolute;
+      top: -70px; right: -70px;
       width: 200px; height: 200px;
-      background: var(--lav-bg); border-radius: 50%; opacity: 0.6;
-      pointer-events: none;
+      background: #FFCCE6; border-radius: 50%; opacity: 0.4;
     }
     .hero-pre {
-      font-size: 11px; font-weight: 800; letter-spacing: 3px;
-      color: var(--purple); text-transform: uppercase; margin-bottom: 22px;
-      background: rgba(43,15,168,0.07); display: inline-block;
-      padding: 5px 12px; border-radius: 20px;
+      font-size: 10px; font-weight: 800; letter-spacing: 2.5px;
+      color: var(--purple); text-transform: uppercase;
+      background: rgba(43,15,168,0.08);
+      display: inline-block; padding: 5px 12px; border-radius: 20px;
+      margin-bottom: 20px;
     }
-    .hero-inner {
-      display: flex; flex-direction: column; gap: 36px;
-      max-width: 780px; margin: 0 auto; position: relative; z-index: 1;
+    .hero-img {
+      width: 100%; padding: 0 18px;
+      margin-bottom: 24px;
     }
-    @media (min-width: 700px) {
-      .hero-inner { flex-direction: row; align-items: center; }
-      .hero-img { flex: 0 0 300px; }
-      .hero-copy { flex: 1; }
+    .hero-img img {
+      width: 100%; border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(43,15,168,0.14);
     }
-    .hero-img img { width: 100%; border-radius: 16px; box-shadow: var(--shadow-md); }
+    .hero-copy { padding: 0 18px; }
     .hero-headline {
-      font-size: clamp(26px, 5vw, 40px);
-      font-weight: 900; color: var(--navy); line-height: 1.15;
-      margin-bottom: 18px;
+      font-size: 26px; font-weight: 900;
+      color: var(--navy); line-height: 1.18;
+      margin-bottom: 16px;
     }
-    .hero-sub { font-size: 15px; color: #444; margin-bottom: 10px; line-height: 1.75; }
-    .hero-sub2 { font-size: 15px; color: #333; font-weight: 700; margin-bottom: 26px; }
-    .hero-trust { margin-top: 14px; font-size: 12px; color: #999; text-align: center; }
+    .hero-sub  { font-size: 15px; color: #444; line-height: 1.75; margin-bottom: 10px; }
+    .hero-sub2 { font-size: 15px; color: #222; font-weight: 700; margin-bottom: 24px; }
+    .hero-trust { font-size: 12px; color: #999; text-align: center; margin-top: 12px; }
 
-    /* ─── 2. AUDIENCE BANNER ─── */
-    .audience-banner {
+    /* ════════════════════════════
+       2. BANNER
+    ════════════════════════════ */
+    .banner {
       background: var(--navy); color: #fff;
-      padding: 20px 24px; text-align: center;
+      padding: 18px 18px; text-align: center;
     }
-    .audience-banner p {
-      font-size: 15px; font-weight: 600; line-height: 1.55;
-      max-width: 680px; margin: 0 auto;
-    }
+    .banner p { font-size: 14px; font-weight: 600; line-height: 1.55; }
 
-    /* ─── 3. "ISSO É PARA VOCÊ SE..." ─── */
-    .for-you { background: var(--pink-bg); padding: 48px 24px; }
+    /* ════════════════════════════
+       3. PARA VOCÊ SE...
+    ════════════════════════════ */
+    .for-you { background: var(--pink-bg); padding: 36px 18px; }
     .for-you h2 {
-      font-size: clamp(22px, 4vw, 30px); font-weight: 900;
-      color: var(--purple); margin-bottom: 24px;
+      font-size: 22px; font-weight: 900;
+      color: var(--purple); margin-bottom: 20px; line-height: 1.25;
     }
-    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .bullet-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 15px; color: #1A1A3A; line-height: 1.6; }
+    .blist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .blist li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #1A1A3A; line-height: 1.6; }
 
-    /* ─── 4. SE VOCÊ TENTA... ─── */
-    .if-you { padding: 48px 24px; background: #fff; }
+    /* ════════════════════════════
+       4. SE VOCÊ TENTA...
+    ════════════════════════════ */
+    .if-you { background: #fff; padding: 36px 18px; }
     .box-lav {
       background: var(--lav-bg); border-radius: var(--radius);
-      padding: 30px 28px; margin-bottom: 36px;
-      box-shadow: var(--shadow-sm);
+      padding: 24px 20px; margin-bottom: 30px;
+      box-shadow: var(--shadow);
     }
     .box-lav h2 {
-      font-size: clamp(20px, 4vw, 26px); font-weight: 900;
-      color: var(--navy); margin-bottom: 20px; line-height: 1.25;
+      font-size: 20px; font-weight: 900;
+      color: var(--navy); margin-bottom: 18px; line-height: 1.25;
     }
 
-    /* ─── NOT IS GRID ─── */
-    .not-is-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 780px; margin: 0 auto; }
-    @media (min-width: 600px) { .not-is-grid { grid-template-columns: 1fr 1fr; } }
-    .not-box { background: var(--lav-bg); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); }
+    /* Story */
+    .story-title { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 12px; }
+    .story-text  { font-size: 15px; color: #333; line-height: 1.8; font-weight: 600; margin-bottom: 28px; }
+
+    /* Não é / É */
+    .not-is-grid { display: flex; flex-direction: column; gap: 14px; }
+    .not-box {
+      background: var(--lav-bg); border-radius: var(--radius);
+      padding: 22px 20px; box-shadow: var(--shadow);
+    }
     .not-box.is-box { background: var(--pink-bg); }
-    .not-box h3 { font-size: 18px; font-weight: 900; color: var(--navy); margin-bottom: 16px; }
+    .not-box h3 { font-size: 17px; font-weight: 900; color: var(--navy); margin-bottom: 14px; }
     .not-box.is-box h3 { color: var(--pink); }
-    .not-box p { font-size: 14.5px; color: #2A2A4A; line-height: 1.7; font-weight: 600; }
+    .not-box p { font-size: 14px; color: #2A2A4A; line-height: 1.7; font-weight: 600; }
 
-    /* ─── 5. O PIOR NÃO É... ─── */
-    .worst { padding: 52px 24px; background: #F8F7FF; }
-    .worst h2 { font-size: clamp(20px, 4vw, 28px); font-weight: 900; color: var(--navy); margin-bottom: 8px; }
-    .worst .lead { font-size: 15px; color: #555; font-weight: 600; margin-bottom: 22px; }
+    /* ════════════════════════════
+       5. O PIOR NÃO É...
+    ════════════════════════════ */
+    .worst { background: #F8F7FF; padding: 40px 18px; }
+    .worst h2 { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
+    .worst-lead { font-size: 14px; color: #555; font-weight: 600; margin-bottom: 20px; }
     .doubts-box {
-      background: var(--lav-bg); border-radius: var(--radius); padding: 24px 28px;
-      margin-bottom: 26px; box-shadow: var(--shadow-sm);
+      background: var(--lav-bg); border-radius: var(--radius);
+      padding: 20px; margin-bottom: 22px; box-shadow: var(--shadow);
     }
-    .doubts-box li { font-size: 15px; color: #1A1A3A; margin-bottom: 8px; }
-    .insight-text { font-size: 15px; color: #1A1A3A; line-height: 1.75; font-weight: 600; margin-bottom: 34px; }
+    .doubts-box li { font-size: 14px; color: #1A1A3A; margin-bottom: 8px; }
+    .insight { font-size: 15px; color: #1A1A3A; line-height: 1.75; font-weight: 600; margin-bottom: 28px; }
+    .section-h2 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 10px; line-height: 1.25; }
+    .section-p  { font-size: 15px; color: #333; line-height: 1.75; font-weight: 600; margin-bottom: 20px; }
 
-    /* Comparison table */
-    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
-    .compare-col { border-radius: var(--radius); padding: 22px 20px; box-shadow: var(--shadow-sm); }
-    .compare-col.left-col { background: var(--lav-bg); }
+    /* Comparativo — coluna única no mobile */
+    .compare-wrap { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .compare-col  { border-radius: var(--radius); padding: 20px 18px; box-shadow: var(--shadow); }
+    .compare-col.left-col  { background: var(--lav-bg); }
     .compare-col.right-col { background: var(--pink-bg); }
-    .compare-col h4 { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 14px; }
+    .compare-col h4 { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
     .compare-col.right-col h4 { color: var(--pink); }
-    .compare-col li { font-size: 13.5px; color: #333; margin-bottom: 8px; line-height: 1.45; }
+    .compare-col li { font-size: 13px; color: #333; margin-bottom: 7px; line-height: 1.45; }
 
     .impact-box {
       background: var(--navy); color: #fff;
-      border-radius: var(--radius); padding: 26px 28px; text-align: center;
+      border-radius: var(--radius); padding: 22px 20px; text-align: center;
       box-shadow: 0 8px 28px rgba(21,0,96,0.22);
     }
-    .impact-box p { font-size: clamp(16px, 3vw, 21px); font-weight: 800; line-height: 1.45; }
+    .impact-box p { font-size: 17px; font-weight: 800; line-height: 1.45; }
 
-    /* ─── 6. INFORMAÇÃO CERTA ─── */
-    .info-right { padding: 52px 24px; background: #fff; }
-    .info-right h2 { font-size: clamp(20px, 4vw, 28px); font-weight: 900; color: var(--navy); margin-bottom: 14px; }
-    .info-right .lead { font-size: 15px; color: #444; font-weight: 600; margin-bottom: 30px; line-height: 1.75; }
+    /* ════════════════════════════
+       6. INFO CERTA / MÉTODO
+    ════════════════════════════ */
+    .info-right { background: #fff; padding: 40px 18px; }
+    .section-title { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 12px; line-height: 1.25; }
+    .section-lead  { font-size: 15px; color: #444; font-weight: 600; margin-bottom: 24px; line-height: 1.75; }
 
-    /* Advertorial screenshot */
-    .advertorial-shot {
+    .adv-shot {
       border: 2px solid #DDD; border-radius: var(--radius);
-      overflow: hidden; margin-bottom: 30px;
-      box-shadow: var(--shadow-md);
+      overflow: hidden; margin-bottom: 26px;
+      box-shadow: var(--shadow);
     }
-    .advertorial-shot img { width: 100%; display: block; }
+    .adv-shot img { width: 100%; display: block; }
 
     .guide-promise {
       background: var(--lav-bg); border-radius: var(--radius);
-      padding: 24px 28px; margin-bottom: 30px; box-shadow: var(--shadow-sm);
+      padding: 20px; margin-bottom: 26px; box-shadow: var(--shadow);
     }
     .guide-promise p { font-size: 15px; color: #1A1A3A; line-height: 1.75; }
     .guide-promise strong { color: var(--navy); }
 
-    /* Method 3R */
-    .method-title { font-size: clamp(18px, 3vw, 24px); font-weight: 900; color: var(--navy); margin-bottom: 20px; }
-    .method-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    @media (min-width: 560px) { .method-grid { grid-template-columns: repeat(3, 1fr); } }
+    .method-label { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 16px; }
+    .method-cards { display: flex; flex-direction: column; gap: 12px; }
     .method-card {
-      background: var(--lav-bg); border-radius: var(--radius); padding: 22px;
-      box-shadow: var(--shadow-sm);
-      border-top: 3px solid var(--purple);
-      transition: transform 0.2s;
-    }
-    .method-card:hover { transform: translateY(-3px); }
-    .method-card h4 { font-size: 16px; font-weight: 900; color: var(--purple); margin-bottom: 10px; }
-    .method-card p { font-size: 13.5px; color: #333; line-height: 1.65; }
-
-    /* ─── 7. MID CTA ─── */
-    .mid-cta { background: var(--pink-bg); padding: 48px 24px; text-align: center; }
-    .mid-cta .box {
-      background: #fff; border: 2px solid #F0A0CC;
-      border-radius: var(--radius); padding: 28px 30px; margin-bottom: 30px;
-      text-align: left; max-width: 680px; margin-left: auto; margin-right: auto;
-      box-shadow: var(--shadow-sm);
-    }
-    .mid-cta .box p { font-size: 16px; color: var(--navy); font-weight: 700; line-height: 1.65; }
-    .mid-cta .box p strong { font-weight: 900; }
-
-    /* ─── 8. COMEÇAR HOJE ─── */
-    .start-today { padding: 52px 24px; background: #fff; }
-    .start-today .box-pink-solid {
-      background: var(--pink-bg); border-radius: var(--radius);
-      padding: 28px 30px; margin-bottom: 36px; box-shadow: var(--shadow-sm);
-    }
-    .start-today .box-pink-solid h2 {
-      font-size: clamp(20px, 4vw, 26px); font-weight: 900; color: var(--navy); margin-bottom: 12px;
-    }
-    .start-today .box-pink-solid p { font-size: 15px; color: #333; line-height: 1.75; }
-
-    /* Benefits 2x3 */
-    .benefits-title { font-size: clamp(20px, 4vw, 26px); font-weight: 900; color: var(--navy); margin-bottom: 22px; }
-    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
-    .benefit-cell {
       background: var(--lav-bg); border-radius: var(--radius);
-      padding: 20px; font-size: 14px; color: #1A1A3A; line-height: 1.6;
-      box-shadow: var(--shadow-sm);
-      border-left: 3px solid var(--purple);
+      padding: 20px; box-shadow: var(--shadow);
+      border-left: 4px solid var(--purple);
+    }
+    .method-card h4 { font-size: 16px; font-weight: 900; color: var(--purple); margin-bottom: 8px; }
+    .method-card p  { font-size: 13px; color: #333; line-height: 1.65; }
+
+    /* ════════════════════════════
+       7. MID CTA
+    ════════════════════════════ */
+    .mid-cta { background: var(--pink-bg); padding: 36px 18px; }
+    .mid-cta-box {
+      background: #fff; border: 2px solid #F0A0CC;
+      border-radius: var(--radius); padding: 22px 20px;
+      margin-bottom: 24px; box-shadow: var(--shadow);
+    }
+    .mid-cta-box p { font-size: 16px; color: var(--navy); font-weight: 700; line-height: 1.65; }
+
+    /* ════════════════════════════
+       8. COMEÇAR HOJE
+    ════════════════════════════ */
+    .start-today { background: #fff; padding: 40px 18px; }
+    .pink-box {
+      background: var(--pink-bg); border-radius: var(--radius);
+      padding: 22px 20px; margin-bottom: 30px; box-shadow: var(--shadow);
+    }
+    .pink-box h2 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+    .pink-box p  { font-size: 14px; color: #333; line-height: 1.75; }
+
+    /* Conquistas — 2 colunas no mobile */
+    .benefits-title { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 18px; line-height: 1.25; }
+    .benefits-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 32px; }
+    .benefit-cell {
+      background: var(--lav-bg); border-radius: 10px;
+      padding: 14px 12px; font-size: 13px; color: #1A1A3A; line-height: 1.55;
+      border-left: 3px solid var(--purple); box-shadow: var(--shadow);
     }
 
-    /* Inside the guide */
-    .inside-guide { margin-bottom: 40px; }
-    .inside-guide h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 900; color: var(--navy); margin-bottom: 20px; }
-    .inside-box { background: var(--lav-bg); border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow-sm); }
-
-    /* Bonuses */
-    .bonuses-section { margin-bottom: 40px; }
-    .bonuses-section h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 900; color: var(--navy); margin-bottom: 20px; line-height: 1.25; }
-    .bonuses-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 560px) { .bonuses-grid { grid-template-columns: 1fr 1fr; } }
-    .bonus-cell {
-      background: var(--pink-bg); border-radius: var(--radius); padding: 26px;
-      box-shadow: var(--shadow-sm); border-top: 3px solid var(--pink);
+    /* Dentro do guia */
+    .inside-h2 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 16px; }
+    .inside-box {
+      background: var(--lav-bg); border-radius: var(--radius);
+      padding: 20px; margin-bottom: 32px; box-shadow: var(--shadow);
     }
-    .bonus-cell h4 { font-size: 16px; font-weight: 900; color: var(--pink); margin-bottom: 10px; }
-    .bonus-cell p { font-size: 14px; color: #333; line-height: 1.65; }
 
-    /* ─── 9. TESTIMONIALS ─── */
-    .testimonials { padding: 60px 24px; background: #F8F7FF; }
-    .testimonials h2 { font-size: clamp(22px, 4vw, 32px); font-weight: 900; color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
-    .testimonials .lead { font-size: 15px; color: #444; font-weight: 600; margin-bottom: 34px; line-height: 1.65; }
-    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 30px; }
-    @media (min-width: 600px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
-    .testi-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); transition: transform 0.2s; }
-    .testi-img:hover { transform: translateY(-4px); }
-    .testi-img img { width: 100%; }
-    .testi-box { background: #fff; border-radius: var(--radius); padding: 24px 28px; box-shadow: var(--shadow-sm); }
-    .testi-box p { font-size: 15px; color: var(--navy); line-height: 1.75; font-weight: 600; }
+    /* Bônus */
+    .bonus-h2 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.25; }
+    .bonus-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .bonus-card {
+      background: var(--pink-bg); border-radius: var(--radius);
+      padding: 20px; box-shadow: var(--shadow);
+      border-left: 4px solid var(--pink);
+    }
+    .bonus-card h4 { font-size: 16px; font-weight: 900; color: var(--pink); margin-bottom: 8px; }
+    .bonus-card p  { font-size: 13px; color: #333; line-height: 1.65; }
 
-    /* ─── 10. PRICING ─── */
-    .pricing { padding: 60px 24px; background: #fff; }
-    .pricing h2 { font-size: clamp(22px, 4vw, 30px); font-weight: 900; color: var(--navy); margin-bottom: 14px; line-height: 1.2; }
-    .pricing .lead { font-size: 15px; color: #444; line-height: 1.75; margin-bottom: 30px; }
-    .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 30px; }
-    @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+    /* ════════════════════════════
+       9. DEPOIMENTOS
+    ════════════════════════════ */
+    .testimonials { background: #F8F7FF; padding: 44px 18px; }
+    .testi-h2    { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
+    .testi-lead  { font-size: 14px; color: #444; font-weight: 600; margin-bottom: 26px; line-height: 1.65; }
+    .testi-grid  { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .testi-item  { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+    .testi-item img { width: 100%; display: block; }
+    .testi-close {
+      background: #fff; border-radius: var(--radius);
+      padding: 20px; box-shadow: var(--shadow);
+    }
+    .testi-close p { font-size: 15px; color: var(--navy); line-height: 1.75; font-weight: 600; }
 
-    .price-card { border: 2px solid #E0E0E0; border-radius: 16px; padding: 30px 26px; }
+    /* ════════════════════════════
+       10. PREÇOS
+    ════════════════════════════ */
+    .pricing { background: #fff; padding: 44px 18px; }
+    .pricing-h2   { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 12px; line-height: 1.2; }
+    .pricing-lead { font-size: 14px; color: #444; line-height: 1.75; margin-bottom: 24px; }
+
+    .price-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+
+    .price-card {
+      border: 2px solid #E0E0E0; border-radius: 16px; padding: 26px 20px;
+    }
     .price-card.featured {
       border-color: var(--pink); background: var(--pink-bg);
-      box-shadow: 0 8px 32px rgba(212,0,111,0.15);
+      box-shadow: 0 8px 32px rgba(212,0,111,0.14);
     }
-    .price-tag { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--purple); text-transform: uppercase; margin-bottom: 10px; }
-    .price-card.featured .price-tag { color: var(--pink); }
-    .price-amount { font-size: 52px; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 12px; }
-    .price-card.featured .price-amount { color: var(--pink); }
-    .price-sub { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 18px; line-height: 1.55; }
-    .price-items { margin-bottom: 24px; }
-    .price-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; color: #333; margin-bottom: 9px; line-height: 1.55; }
-    .pi-check { color: var(--purple); font-weight: 800; flex-shrink: 0; }
-    .price-card.featured .pi-check { color: var(--pink); }
+    .price-tag    { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--purple); text-transform: uppercase; margin-bottom: 8px; }
+    .featured .price-tag { color: var(--pink); }
+    .price-val    { font-size: 52px; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 10px; }
+    .featured .price-val { color: var(--pink); }
+    .price-sub    { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.5; }
+    .price-items  { margin-bottom: 22px; }
+    .price-item   { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #333; margin-bottom: 9px; line-height: 1.55; }
+    .pi-check     { color: var(--purple); font-weight: 800; flex-shrink: 0; }
+    .featured .pi-check { color: var(--pink); }
 
-    .pricing-copy-box {
-      background: var(--lav-bg); border-radius: var(--radius); padding: 24px 28px;
-      margin-bottom: 30px; box-shadow: var(--shadow-sm);
+    .pricing-box {
+      background: var(--lav-bg); border-radius: var(--radius);
+      padding: 20px; margin-bottom: 24px; box-shadow: var(--shadow);
     }
-    .pricing-copy-box p { font-size: 15px; color: var(--navy); line-height: 1.75; font-weight: 600; }
+    .pricing-box p { font-size: 15px; color: var(--navy); line-height: 1.75; font-weight: 600; }
 
-    /* ─── 11. GUARANTEE ─── */
-    .guarantee { padding: 0 24px 52px; background: #fff; }
-    .guarantee-box {
-      background: var(--lav-bg); border-radius: var(--radius); padding: 28px 30px;
-      box-shadow: var(--shadow-sm); display: flex; gap: 20px; align-items: flex-start;
+    /* ════════════════════════════
+       11. GARANTIA
+    ════════════════════════════ */
+    .guarantee { background: #fff; padding: 0 18px 44px; }
+    .guarantee-card {
+      background: var(--lav-bg); border-radius: var(--radius);
+      padding: 22px 20px; box-shadow: var(--shadow);
+      display: flex; gap: 16px; align-items: flex-start;
     }
-    .guarantee-icon { font-size: 36px; flex-shrink: 0; }
-    .guarantee-box h2 { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
-    .guarantee-box p { font-size: 15px; color: #333; line-height: 1.7; }
+    .g-icon { font-size: 34px; flex-shrink: 0; }
+    .guarantee-card h2 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+    .guarantee-card p  { font-size: 14px; color: #333; line-height: 1.7; }
 
-    /* ─── 12. FAQ ─── */
-    .faq { padding: 0 24px 52px; background: #fff; }
-    .faq h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 900; color: var(--navy); margin-bottom: 22px; }
-    .faq-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .faq-table tr { border-bottom: 1px solid #E8E5FF; }
-    .faq-table tr:last-child { border-bottom: none; }
-    .faq-table tr:nth-child(odd) td { background: var(--lav-bg); }
-    .faq-table tr:nth-child(even) td { background: #fff; }
-    .faq-table td { padding: 18px 16px; font-size: 14.5px; vertical-align: top; line-height: 1.65; }
-    .faq-table td:first-child { font-weight: 800; color: var(--navy); width: 40%; }
-    .faq-table td:last-child { color: #333; }
+    /* ════════════════════════════
+       12. FAQ
+    ════════════════════════════ */
+    .faq { background: #fff; padding: 0 18px 44px; }
+    .faq-h2 { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 20px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--lav-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .faq-q    { font-size: 14px; font-weight: 800; color: var(--navy); padding: 16px 18px; border-bottom: 1px solid rgba(43,15,168,0.1); }
+    .faq-a    { font-size: 14px; color: #333; padding: 14px 18px; line-height: 1.65; }
 
-    /* ─── FINAL CTA ─── */
-    .final-cta { padding: 52px 24px; background: var(--lav-bg); text-align: center; }
+    /* ════════════════════════════
+       13. FINAL CTA
+    ════════════════════════════ */
+    .final-cta { background: var(--lav-bg); padding: 44px 18px; }
 
-    /* ─── DISCLAIMER ─── */
-    .disclaimer { padding: 32px 24px; background: #FAFAFA; border-top: 1px solid #EEE; }
-    .disclaimer p { font-size: 12px; color: #999; line-height: 1.8; max-width: 680px; margin: 0 auto; text-align: center; }
+    /* ════════════════════════════
+       DISCLAIMER
+    ════════════════════════════ */
+    .disclaimer { background: #FAFAFA; border-top: 1px solid #EEE; padding: 28px 18px 48px; }
+    .disclaimer p { font-size: 11px; color: #999; line-height: 1.8; text-align: center; }
 
-    /* ─── FLOATING CTA ─── */
-    .floating-cta {
+    /* ════════════════════════════
+       FLOATING CTA (sempre visível mobile)
+    ════════════════════════════ */
+    .sticky-cta {
       position: fixed; bottom: 0; left: 0; right: 0;
-      background: rgba(21,0,96,0.97); padding: 10px 16px 14px; z-index: 200;
-      backdrop-filter: blur(4px);
+      background: rgba(21,0,96,0.97);
+      padding: 10px 16px 18px;
+      z-index: 300;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.20);
     }
-    @media (min-width: 700px) { .floating-cta { display: none; } }
-    .floating-cta a {
+    .sticky-cta a {
       display: block;
       background: linear-gradient(135deg, #3314C0, var(--purple));
-      color: #fff; text-align: center; padding: 15px; border-radius: 8px;
-      font-weight: 800; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;
-      box-shadow: 0 4px 16px rgba(43,15,168,0.4);
+      color: #fff; text-align: center; padding: 16px;
+      border-radius: 10px; font-weight: 800; font-size: 14px;
+      letter-spacing: 1px; text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(43,15,168,0.40);
+      min-height: 52px; line-height: 1.3;
     }
-    @media (max-width: 699px) { body { padding-bottom: 68px; } }
+    body { padding-bottom: 84px; }
+
+    /* ════ DESKTOP (layout aprimorado) ════ */
+    @media (min-width: 640px) {
+      .wrap { max-width: 720px; padding: 0 32px; }
+      .hero { padding: 52px 0 52px; }
+      .hero-inner { display: flex; align-items: center; gap: 40px; padding: 0 32px; }
+      .hero-img { flex: 0 0 280px; padding: 0; margin-bottom: 0; }
+      .hero-copy { flex: 1; padding: 0; }
+      .hero-headline { font-size: 34px; }
+      .not-is-grid { flex-direction: row; }
+      .not-is-grid .not-box { flex: 1; }
+      .compare-wrap { flex-direction: row; }
+      .compare-wrap .compare-col { flex: 1; }
+      .method-cards { flex-direction: row; }
+      .method-cards .method-card { flex: 1; }
+      .bonus-cards { flex-direction: row; }
+      .bonus-cards .bonus-card { flex: 1; }
+      .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
+      .price-cards { flex-direction: row; }
+      .price-cards .price-card { flex: 1; }
+      .sticky-cta { display: none; }
+      body { padding-bottom: 0; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════════
-       1. HERO
-  ════════════════════════════════════ -->
+  <!-- ══════════ 1. HERO ══════════ -->
   <section class="hero">
-    <div class="container">
+    <div class="wrap">
       <p class="hero-pre">Chega de resolver a madrugada no susto</p>
-      <div class="hero-inner">
-        <div class="hero-img">
-          <img src="Modelo_página/imagens/img3.jpg" alt="Das Noites em Caos às Noites em Paz — Método Noites em Paz 3R">
-        </div>
-        <div class="hero-copy">
-          <h1 class="hero-headline">
-            Seu bebê acorda várias vezes à noite e você já tentou de tudo, mas ainda não sabe o que fazer quando a madrugada vira caos.
-          </h1>
-          <p class="hero-sub">
-            Um guia prático para mães de bebês de 0 a 2 anos pararem de tentar tudo no desespero e começarem a seguir o Método Noites em Paz 3R™.
-          </p>
-          <p class="hero-sub2">
-            O problema não é falta de amor. É tentar resolver a madrugada quando ela já virou caos.
-          </p>
-          <a href="#LINK_DO_CHECKOUT" class="btn btn-block btn-lg">
-            Quero Sair do Improviso Agora
-          </a>
-          <p class="hero-trust">Acesso imediato &nbsp;•&nbsp; garantia de 7 dias &nbsp;•&nbsp; conteúdo educativo</p>
-        </div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-img">
+        <img src="Modelo_página/imagens/img3.jpg" alt="Das Noites em Caos às Noites em Paz — Método Noites em Paz 3R">
+      </div>
+      <div class="hero-copy">
+        <h1 class="hero-headline">
+          Seu bebê acorda várias vezes à noite e você já tentou de tudo, mas ainda não sabe o que fazer quando a madrugada vira caos.
+        </h1>
+        <p class="hero-sub">Um guia prático para mães de bebês de 0 a 2 anos pararem de tentar tudo no desespero e começarem a seguir o Método Noites em Paz 3R™.</p>
+        <p class="hero-sub2">O problema não é falta de amor. É tentar resolver a madrugada quando ela já virou caos.</p>
+        <a href="#LINK_DO_CHECKOUT" class="btn">Quero Sair do Improviso Agora</a>
+        <p class="hero-trust">Acesso imediato &nbsp;•&nbsp; garantia de 7 dias &nbsp;•&nbsp; conteúdo educativo</p>
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       2. AUDIENCE BANNER
-  ════════════════════════════════════ -->
-  <div class="audience-banner">
-    <div class="container">
-      <p>Para mães de bebês de 0 a 2 anos que acordam várias vezes à noite e precisam parar de resolver cada madrugada no susto.</p>
-    </div>
+  <!-- ══════════ 2. BANNER ══════════ -->
+  <div class="banner">
+    <p>Para mães de bebês de 0 a 2 anos que acordam várias vezes à noite e precisam parar de resolver cada madrugada no susto.</p>
   </div>
 
 
-  <!-- ════════════════════════════════════
-       3. ISSO É PARA VOCÊ SE...
-  ════════════════════════════════════ -->
+  <!-- ══════════ 3. PARA VOCÊ SE... ══════════ -->
   <section class="for-you">
-    <div class="container">
+    <div class="wrap">
       <h2>Isso é para você se…</h2>
-      <ul class="bullet-list">
+      <ul class="blist">
         <li><span class="dot">●</span> Seu bebê acorda várias vezes durante a noite.</li>
         <li><span class="dot">●</span> Você já tentou peito, colo, música, banho, silêncio ou luz apagada e continua sem saber o que realmente funcionou.</li>
         <li><span class="dot">●</span> Você não sabe se o choro é sono, fome, desconforto, excesso de estímulo ou necessidade de acolhimento.</li>
@@ -388,14 +436,12 @@
   </section>
 
 
-  <!-- ════════════════════════════════════
-       4. SE VOCÊ TENTA RESOLVER...
-  ════════════════════════════════════ -->
+  <!-- ══════════ 4. SE VOCÊ TENTA... ══════════ -->
   <section class="if-you">
-    <div class="container">
+    <div class="wrap">
       <div class="box-lav">
         <h2>Se você tenta resolver a noite só quando o bebê já está chorando, isso é para você</h2>
-        <ul class="bullet-list">
+        <ul class="blist">
           <li><span class="dot">●</span> Seu bebê acorda várias vezes e você não sabe se é sono, fome, desconforto ou excesso de estímulo.</li>
           <li><span class="dot">●</span> Você tenta uma coisa hoje, outra amanhã, e nunca sabe o que realmente funcionou.</li>
           <li><span class="dot">●</span> A madrugada chega e você já está cansada demais para pensar com clareza.</li>
@@ -403,19 +449,13 @@
         </ul>
       </div>
 
+      <p class="story-title">A virada de uma mãe no limite</p>
+      <p class="story-text">Ela chegava na madrugada já derrotada. O bebê chorava, ela tentava colo, peito, silêncio, música… e no fim só sobrava culpa. A virada começou quando ela parou de procurar mais uma dica solta e passou a seguir uma lógica simples: reconhecer os sinais, regular o ambiente e repetir um ritual possível. Não virou mágica. Virou direção.</p>
 
-      <!-- ── STORY ── -->
-      <h2 style="font-size: clamp(20px,4vw,26px); font-weight:900; color:var(--navy); margin-bottom:14px;">A virada de uma mãe no limite</h2>
-      <p style="font-size:15px; color:#333; line-height:1.75; font-weight:600; margin-bottom:36px;">
-        Ela chegava na madrugada já derrotada. O bebê chorava, ela tentava colo, peito, silêncio, música… e no fim só sobrava culpa. A virada começou quando ela parou de procurar mais uma dica solta e passou a seguir uma lógica simples: reconhecer os sinais, regular o ambiente e repetir um ritual possível. Não virou mágica. Virou direção.
-      </p>
-
-
-      <!-- ── NÃO É / É ── -->
       <div class="not-is-grid">
         <div class="not-box">
           <h3>Esse guia NÃO é…</h3>
-          <ul class="bullet-list">
+          <ul class="blist">
             <li><span class="dot">●</span> Não promete que seu bebê nunca mais vai acordar.</li>
             <li><span class="dot">●</span> Não ensina método rígido ou rotina militar.</li>
             <li><span class="dot">●</span> Não manda ignorar choro.</li>
@@ -431,16 +471,14 @@
   </section>
 
 
-  <!-- ════════════════════════════════════
-       5. O PIOR NÃO É SÓ O BEBÊ ACORDAR
-  ════════════════════════════════════ -->
+  <!-- ══════════ 5. O PIOR NÃO É... ══════════ -->
   <section class="worst">
-    <div class="container">
+    <div class="wrap">
       <h2>O pior não é só o bebê acordar.</h2>
-      <p class="lead">O pior é não saber o que aquele choro está tentando dizer.</p>
+      <p class="worst-lead">O pior é não saber o que aquele choro está tentando dizer.</p>
 
       <div class="doubts-box">
-        <ul class="bullet-list">
+        <ul class="blist">
           <li><span class="dot">●</span> É fome?</li>
           <li><span class="dot">●</span> É sono?</li>
           <li><span class="dot">●</span> É desconforto?</li>
@@ -452,34 +490,30 @@
         </ul>
       </div>
 
-      <p class="insight-text">
-        Essa dúvida enlouquece uma mãe cansada. E é por isso que o primeiro passo do Método Noites em Paz 3R™ é <strong>Reconhecer</strong>: antes de tentar resolver, você precisa entender o que está acontecendo.
-      </p>
+      <p class="insight">Essa dúvida enlouquece uma mãe cansada. E é por isso que o primeiro passo do Método Noites em Paz 3R™ é <strong>Reconhecer</strong>: antes de tentar resolver, você precisa entender o que está acontecendo.</p>
 
-      <h2 style="margin-bottom:10px;">O preço invisível de continuar no improviso</h2>
-      <p style="font-size:15px; color:#333; line-height:1.7; font-weight:600; margin-bottom:22px;">
-        Toda madrugada mal resolvida cobra no dia seguinte. Cobra na sua paciência, no seu humor, no seu relacionamento, no seu corpo e na sua autoestima como mãe. Não é só uma noite ruim. Quando se repete, vira rotina de sobrevivência.
-      </p>
+      <p class="section-h2">O preço invisível de continuar no improviso</p>
+      <p class="section-p">Toda madrugada mal resolvida cobra no dia seguinte. Cobra na sua paciência, no seu humor, no seu relacionamento, no seu corpo e na sua autoestima como mãe. Não é só uma noite ruim. Quando se repete, vira rotina de sobrevivência.</p>
 
-      <div class="compare-grid">
+      <div class="compare-wrap">
         <div class="compare-col left-col">
           <h4>Tentando no susto</h4>
-          <ul class="bullet-list">
-            <li><span class="dot" style="font-size:14px;">●</span> Noites imprevisíveis</li>
-            <li><span class="dot" style="font-size:14px;">●</span> Choro sem entender</li>
-            <li><span class="dot" style="font-size:14px;">●</span> Dicas soltas</li>
-            <li><span class="dot" style="font-size:14px;">●</span> Culpa e exaustão</li>
-            <li><span class="dot" style="font-size:14px;">●</span> Tentativa no desespero</li>
+          <ul class="blist">
+            <li><span class="dot">●</span> Noites imprevisíveis</li>
+            <li><span class="dot">●</span> Choro sem entender</li>
+            <li><span class="dot">●</span> Dicas soltas</li>
+            <li><span class="dot">●</span> Culpa e exaustão</li>
+            <li><span class="dot">●</span> Tentativa no desespero</li>
           </ul>
         </div>
         <div class="compare-col right-col">
-          <h4 style="color:var(--pink);">Com o 3R</h4>
-          <ul class="bullet-list">
-            <li><span class="dot dot-pink" style="font-size:14px;">●</span> Sinais reconhecidos</li>
-            <li><span class="dot dot-pink" style="font-size:14px;">●</span> Ambiente regulado</li>
-            <li><span class="dot dot-pink" style="font-size:14px;">●</span> Ritual repetido</li>
-            <li><span class="dot dot-pink" style="font-size:14px;">●</span> Mais segurança</li>
-            <li><span class="dot dot-pink" style="font-size:14px;">●</span> Rotina mais previsível</li>
+          <h4>Com o 3R</h4>
+          <ul class="blist">
+            <li><span class="dot dot-pink">●</span> Sinais reconhecidos</li>
+            <li><span class="dot dot-pink">●</span> Ambiente regulado</li>
+            <li><span class="dot dot-pink">●</span> Ritual repetido</li>
+            <li><span class="dot dot-pink">●</span> Mais segurança</li>
+            <li><span class="dot dot-pink">●</span> Rotina mais previsível</li>
           </ul>
         </div>
       </div>
@@ -491,18 +525,13 @@
   </section>
 
 
-  <!-- ════════════════════════════════════
-       6. O QUE A INFORMAÇÃO CERTA MUDA
-  ════════════════════════════════════ -->
+  <!-- ══════════ 6. INFO CERTA / MÉTODO ══════════ -->
   <section class="info-right">
-    <div class="container">
-      <h2>O que a informação certa muda nas noites de uma mãe</h2>
-      <p class="lead">
-        Se bebês podem acordar e conselhos populares podem aumentar a culpa, então a solução não é forçar o sono. A solução é dar direção para a mãe observar o que acontece antes, ajustar o ambiente e repetir com calma.
-      </p>
+    <div class="wrap">
+      <h2 class="section-title">O que a informação certa muda nas noites de uma mãe</h2>
+      <p class="section-lead">Se bebês podem acordar e conselhos populares podem aumentar a culpa, então a solução não é forçar o sono. A solução é dar direção para a mãe observar o que acontece antes, ajustar o ambiente e repetir com calma.</p>
 
-      <!-- Advertorial Screenshot -->
-      <div class="advertorial-shot">
+      <div class="adv-shot">
         <img src="Modelo_página/imagens/img7.jpg" alt="Portal Saúde — Especialista explica o Método Noites em Paz 3R">
       </div>
 
@@ -510,8 +539,8 @@
         <p>O guia não promete controlar seu bebê. <strong>Ele te entrega um caminho específico para as madrugadas difíceis:</strong> reconhecer os sinais antes do ambiente da noite virar caos e repetir pequenos rituais até sua rotina ganhar previsibilidade.</p>
       </div>
 
-      <p class="method-title">Método Noites em Paz 3R™</p>
-      <div class="method-grid">
+      <p class="method-label">Método Noites em Paz 3R™</p>
+      <div class="method-cards">
         <div class="method-card">
           <h4>Reconhecer</h4>
           <p>Identificar sinais de sono, cansaço e excesso de estímulo antes do bebê chegar ao limite.</p>
@@ -529,29 +558,26 @@
   </section>
 
 
-  <!-- ════════════════════════════════════
-       7. PINK BOX + MID CTA
-  ════════════════════════════════════ -->
+  <!-- ══════════ 7. MID CTA ══════════ -->
   <section class="mid-cta">
-    <div class="box">
-      <p><strong>Não é sobre controlar seu bebê.</strong><br>É sobre parar de adivinhar tudo quando você já está destruída.</p>
+    <div class="wrap">
+      <div class="mid-cta-box">
+        <p><strong>Não é sobre controlar seu bebê.</strong><br>É sobre parar de adivinhar tudo quando você já está destruída.</p>
+      </div>
+      <a href="#LINK_DO_CHECKOUT" class="btn">Quero Sair do Improviso Agora</a>
     </div>
-    <a href="#LINK_DO_CHECKOUT" class="btn btn-lg">Quero Sair do Improviso Agora</a>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       8. VOCÊ PODE COMEÇAR HOJE À NOITE
-  ════════════════════════════════════ -->
+  <!-- ══════════ 8. COMEÇAR HOJE ══════════ -->
   <section class="start-today">
-    <div class="container">
-
-      <div class="box-pink-solid">
+    <div class="wrap">
+      <div class="pink-box">
         <h2>Você pode começar hoje à noite</h2>
-        <p>Hoje você já pode observar sinais. Hoje você já pode ajustar o ambiente. Hoje você já pode testar um ritual mais simples. Hoje você já pode parar de depender de mais uma pesquisa desesperada de madrugada. O guia foi feito para ser lido e aplicado sem complicar sua rotina.</p>
+        <p>Hoje você já pode observar sinais. Hoje você já pode ajustar o ambiente. Hoje você já pode testar um ritual mais simples. O guia foi feito para ser lido e aplicado sem complicar sua rotina.</p>
       </div>
 
-      <h2 class="benefits-title">O que você conquista quando para de tentar tudo no escuro</h2>
+      <p class="benefits-title">O que você conquista quando para de tentar tudo no escuro</p>
       <div class="benefits-grid">
         <div class="benefit-cell">Você aprende o que observar antes e durante as madrugadas difíceis.</div>
         <div class="benefit-cell">Você entende melhor os sinais antes do choro virar desespero.</div>
@@ -561,77 +587,66 @@
         <div class="benefit-cell">Você sente mais segurança para agir sem se culpar a cada despertar.</div>
       </div>
 
-      <div class="inside-guide">
-        <h2>Dentro do guia você recebe</h2>
-        <div class="inside-box">
-          <ul class="bullet-list">
-            <li><span class="dot">●</span> Como entender os sinais antes do bebê chegar no limite.</li>
-            <li><span class="dot">●</span> Como diferenciar cansaço, excesso de estímulo e necessidade de acolhimento.</li>
-            <li><span class="dot">●</span> Como ajustar ambiente e rotina para noites mais previsíveis.</li>
-            <li><span class="dot">●</span> Rituais práticos para repetir antes da madrugada virar caos.</li>
-            <li><span class="dot">●</span> Aplicação do Método Noites em Paz 3R™ na vida real.</li>
-            <li><span class="dot">●</span> Acolhimento para a mãe parar de carregar culpa sozinha.</li>
-          </ul>
+      <p class="inside-h2">Dentro do guia você recebe</p>
+      <div class="inside-box">
+        <ul class="blist">
+          <li><span class="dot">●</span> Como entender os sinais antes do bebê chegar no limite.</li>
+          <li><span class="dot">●</span> Como diferenciar cansaço, excesso de estímulo e necessidade de acolhimento.</li>
+          <li><span class="dot">●</span> Como ajustar ambiente e rotina para noites mais previsíveis.</li>
+          <li><span class="dot">●</span> Rituais práticos para repetir antes da madrugada virar caos.</li>
+          <li><span class="dot">●</span> Aplicação do Método Noites em Paz 3R™ na vida real.</li>
+          <li><span class="dot">●</span> Acolhimento para a mãe parar de carregar culpa sozinha.</li>
+        </ul>
+      </div>
+
+      <p class="bonus-h2">Bônus que aumentam aplicação e conexão emocional</p>
+      <div class="bonus-cards">
+        <div class="bonus-card">
+          <h4>Planner Noites em Paz do Bebê</h4>
+          <p>Para acompanhar sono, mamadas, despertares e padrões sem depender da memória cansada.</p>
+        </div>
+        <div class="bonus-card">
+          <h4>Mãe, Você Importa</h4>
+          <p>Um guia de autocuidado emocional para culpa, exaustão e reconexão consigo mesma.</p>
         </div>
       </div>
 
-      <div class="bonuses-section">
-        <h2>Bônus que aumentam aplicação e conexão emocional</h2>
-        <div class="bonuses-grid">
-          <div class="bonus-cell">
-            <h4>Planner Noites em Paz do Bebê</h4>
-            <p>Para acompanhar sono, mamadas, despertares e padrões sem depender da memória cansada.</p>
-          </div>
-          <div class="bonus-cell">
-            <h4>Mãe, Você Importa</h4>
-            <p>Um guia de autocuidado emocional para culpa, exaustão e reconexão consigo mesma.</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align:center;">
-        <a href="#LINK_DO_CHECKOUT" class="btn btn-lg">Quero Sair do Improviso Agora</a>
-      </div>
+      <a href="#LINK_DO_CHECKOUT" class="btn">Quero Sair do Improviso Agora</a>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       9. DEPOIMENTOS
-  ════════════════════════════════════ -->
+  <!-- ══════════ 9. DEPOIMENTOS ══════════ -->
   <section class="testimonials">
-    <div class="container">
-      <h2>Mães que estavam tentando tudo no desespero começaram a sentir direção</h2>
-      <p class="lead">O que elas relatam não é mágica. É clareza. É finalmente parar de enfrentar cada despertar como se fosse um problema novo do zero.</p>
+    <div class="wrap">
+      <h2 class="testi-h2">Mães que estavam tentando tudo no desespero começaram a sentir direção</h2>
+      <p class="testi-lead">O que elas relatam não é mágica. É clareza. É finalmente parar de enfrentar cada despertar como se fosse um problema novo do zero.</p>
 
-      <div class="testimonials-grid">
-        <div class="testi-img"><img src="Modelo_página/imagens/img11.jpg" alt="Depoimento Fernanda"></div>
-        <div class="testi-img"><img src="Modelo_página/imagens/img12.jpg" alt="Depoimento Patrícia"></div>
-        <div class="testi-img"><img src="Modelo_página/imagens/img13.jpg" alt="Depoimento Camila"></div>
-        <div class="testi-img"><img src="Modelo_página/imagens/img14.jpg" alt="Depoimento Juliana"></div>
+      <div class="testi-grid">
+        <div class="testi-item"><img src="Modelo_página/imagens/img11.jpg" alt="Depoimento Fernanda"></div>
+        <div class="testi-item"><img src="Modelo_página/imagens/img12.jpg" alt="Depoimento Patrícia"></div>
+        <div class="testi-item"><img src="Modelo_página/imagens/img13.jpg" alt="Depoimento Camila"></div>
+        <div class="testi-item"><img src="Modelo_página/imagens/img14.jpg" alt="Depoimento Juliana"></div>
       </div>
 
-      <div class="testi-box">
+      <div class="testi-close">
         <p>Você não precisa continuar tentando tudo sozinha. Se outras mães saíram do improviso, você também pode começar hoje com um método simples, gentil e aplicável para as madrugadas difíceis.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       10. PREÇOS
-  ════════════════════════════════════ -->
+  <!-- ══════════ 10. PREÇOS ══════════ -->
   <section class="pricing">
-    <div class="container">
-      <h2>Escolha seu caminho para noites mais leves</h2>
-      <p class="lead">O Caminho Essencial te dá o primeiro passo para parar de resolver a madrugada no susto. O Caminho Completo Noites em Paz te entrega apoio para os momentos que mais quebram uma mãe: fases difíceis, mamadas noturnas, falta de ritual, falta de ajuda e dúvidas sobre cada mês do bebê.</p>
+    <div class="wrap">
+      <h2 class="pricing-h2">Escolha seu caminho para noites mais leves</h2>
+      <p class="pricing-lead">O Caminho Essencial te dá o primeiro passo para parar de resolver a madrugada no susto. O Caminho Completo te entrega apoio para os momentos que mais quebram uma mãe: fases difíceis, mamadas noturnas, falta de ritual, falta de ajuda e dúvidas sobre cada mês do bebê.</p>
 
-      <div class="pricing-grid">
+      <div class="price-cards">
 
-        <!-- Caminho Essencial -->
         <div class="price-card">
           <p class="price-tag">Caminho Essencial</p>
-          <p class="price-amount">R$10</p>
+          <p class="price-val">R$10</p>
           <p class="price-sub">Para começar hoje com o que realmente importa:</p>
           <div class="price-items">
             <div class="price-item"><span class="pi-check">✓</span> Guia principal Das Noites em Caos às Noites em Paz</div>
@@ -640,40 +655,37 @@
             <div class="price-item"><span class="pi-check">✓</span> Acesso imediato</div>
             <div class="price-item"><span class="pi-check">✓</span> Garantia de 7 dias</div>
           </div>
-          <a href="#LINK_CAMINHO_ESSENCIAL" class="btn btn-block">Quero Começar por R$10</a>
+          <a href="#LINK_CAMINHO_ESSENCIAL" class="btn">Quero Começar por R$10</a>
         </div>
 
-        <!-- Caminho Completo -->
         <div class="price-card featured">
           <p class="price-tag">Caminho Completo Noites em Paz</p>
-          <p class="price-amount">R$27</p>
-          <p class="price-sub">Por só R$17 a mais, você leva tudo do Caminho Essencial + apoio específico para os momentos que mais desmontam a rotina:</p>
+          <p class="price-val">R$27</p>
+          <p class="price-sub">Por só R$17 a mais, tudo do Caminho Essencial + apoio específico para os momentos que mais desmontam a rotina:</p>
           <div class="price-items">
             <div class="price-item"><span class="pi-check">✓</span> <strong>Guia das Fases Difíceis do Sono</strong> — Para quando parecia que estava melhorando… e tudo bagunça de novo.</div>
-            <div class="price-item"><span class="pi-check">✓</span> <strong>Manual da Amamentação Noturna Leve</strong> — Para mães que ainda amamentam de madrugada e querem menos caos nesse momento.</div>
-            <div class="price-item"><span class="pi-check">✓</span> <strong>Kit Ritual Noturno 10 Minutos</strong> — Um passo a passo simples para desacelerar o bebê antes do sono.</div>
-            <div class="price-item"><span class="pi-check">✓</span> <strong>Scripts para Dividir as Noites Sem Briga</strong> — Para pedir ajuda sem explodir, sem culpa e sem discussão.</div>
+            <div class="price-item"><span class="pi-check">✓</span> <strong>Manual da Amamentação Noturna Leve</strong> — Para mães que ainda amamentam de madrugada.</div>
+            <div class="price-item"><span class="pi-check">✓</span> <strong>Kit Ritual Noturno 10 Minutos</strong> — Um passo a passo para desacelerar o bebê antes do sono.</div>
+            <div class="price-item"><span class="pi-check">✓</span> <strong>Scripts para Dividir as Noites Sem Briga</strong> — Para pedir ajuda sem explodir, sem culpa.</div>
             <div class="price-item"><span class="pi-check">✓</span> <strong>Mapa do Bebê Mês a Mês</strong> — Para entender cada fase e parar de achar que toda mudança é culpa sua.</div>
           </div>
-          <a href="#LINK_CAMINHO_COMPLETO" class="btn btn-block" style="background:var(--pink);">Quero o Caminho Completo</a>
+          <a href="#LINK_CAMINHO_COMPLETO" class="btn btn-pink">Quero o Caminho Completo</a>
         </div>
 
       </div>
 
-      <div class="pricing-copy-box">
-        <p>R$27 não compra uma noite perfeita. Compra direção. Direção para parar de tentar tudo no susto. Direção para entender melhor os sinais. Direção para repetir um caminho sem se culpar a cada despertar. Você não está escolhendo mais arquivos. Está escolhendo parar de atravessar as madrugadas sem saber o próximo passo.</p>
+      <div class="pricing-box">
+        <p>R$27 não compra uma noite perfeita. Compra direção. Direção para parar de tentar tudo no susto. Direção para entender melhor os sinais. Direção para repetir um caminho sem se culpar a cada despertar.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       11. GARANTIA
-  ════════════════════════════════════ -->
+  <!-- ══════════ 11. GARANTIA ══════════ -->
   <section class="guarantee">
-    <div class="container">
-      <div class="guarantee-box">
-        <span class="guarantee-icon">🛡️</span>
+    <div class="wrap">
+      <div class="guarantee-card">
+        <span class="g-icon">🛡️</span>
         <div>
           <h2>Garantia de 7 dias</h2>
           <p>Você pode acessar, ler e sentir se o guia faz sentido para sua realidade. Se não for para você, é só pedir reembolso dentro do prazo. Sem burocracia. Seu risco é zero.</p>
@@ -683,65 +695,57 @@
   </section>
 
 
-  <!-- ════════════════════════════════════
-       12. FAQ
-  ════════════════════════════════════ -->
+  <!-- ══════════ 12. FAQ ══════════ -->
   <section class="faq">
-    <div class="container">
-      <h2>Dúvidas frequentes</h2>
-      <table class="faq-table">
-        <tr>
-          <td>Funciona para todos os bebês?</td>
-          <td>O guia é educativo e ajuda a mãe a entender sinais e rotina. Cada bebê é único.</td>
-        </tr>
-        <tr>
-          <td>É método rígido?</td>
-          <td>Não. A proposta é criar previsibilidade sem culpa e sem rotina militar.</td>
-        </tr>
-        <tr>
-          <td>Serve para bebê que mama de madrugada?</td>
-          <td>Sim. O material considera essa realidade.</td>
-        </tr>
-        <tr>
-          <td>Quando recebo o acesso?</td>
-          <td>O acesso é digital e imediato após a compra.</td>
-        </tr>
-        <tr>
-          <td>E se eu não gostar?</td>
-          <td>Você tem 7 dias de garantia.</td>
-        </tr>
-        <tr>
-          <td>Por que o Caminho Completo vale mais a pena?</td>
-          <td>Porque ele cobre situações que mais quebram a rotina: fases difíceis, mamadas, falta de ritual, falta de ajuda e dúvidas por fase do bebê.</td>
-        </tr>
-      </table>
+    <div class="wrap">
+      <h2 class="faq-h2">Dúvidas frequentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Funciona para todos os bebês?</div>
+          <div class="faq-a">O guia é educativo e ajuda a mãe a entender sinais e rotina. Cada bebê é único.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">É método rígido?</div>
+          <div class="faq-a">Não. A proposta é criar previsibilidade sem culpa e sem rotina militar.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Serve para bebê que mama de madrugada?</div>
+          <div class="faq-a">Sim. O material considera essa realidade.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Quando recebo o acesso?</div>
+          <div class="faq-a">O acesso é digital e imediato após a compra.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">E se eu não gostar?</div>
+          <div class="faq-a">Você tem 7 dias de garantia.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Por que o Caminho Completo vale mais a pena?</div>
+          <div class="faq-a">Porque ele cobre situações que mais quebram a rotina: fases difíceis, mamadas, falta de ritual e dúvidas por fase do bebê.</div>
+        </div>
+      </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       13. CTA FINAL
-  ════════════════════════════════════ -->
+  <!-- ══════════ 13. FINAL CTA ══════════ -->
   <section class="final-cta">
-    <div class="container" style="text-align:center;">
-      <a href="#LINK_DO_CHECKOUT" class="btn btn-lg">Quero Sair do Improviso Agora</a>
+    <div class="wrap">
+      <a href="#LINK_DO_CHECKOUT" class="btn">Quero Sair do Improviso Agora</a>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
-       DISCLAIMER
-  ════════════════════════════════════ -->
+  <!-- DISCLAIMER -->
   <div class="disclaimer">
-    <p>
-      Conteúdo educativo. Não substitui orientação médica, pediátrica ou profissional de saúde. Se o bebê apresenta febre, dificuldade para respirar, perda de peso, refluxo intenso, engasgos frequentes, choro inconsolável ou qualquer sinal preocupante, procure orientação profissional.<br><br>
-      © 2025 Das Noites em Caos às Noites em Paz. Todos os direitos reservados.
-    </p>
+    <p>Conteúdo educativo. Não substitui orientação médica, pediátrica ou profissional de saúde. Se o bebê apresenta febre, dificuldade para respirar, perda de peso, refluxo intenso, engasgos frequentes, choro inconsolável ou qualquer sinal preocupante, procure orientação profissional.<br><br>
+    © 2025 Das Noites em Caos às Noites em Paz. Todos os direitos reservados.</p>
   </div>
 
 
-  <!-- FLOATING CTA (mobile) -->
-  <div class="floating-cta">
+  <!-- STICKY CTA MOBILE -->
+  <div class="sticky-cta">
     <a href="#LINK_DO_CHECKOUT">Quero Sair do Improviso Agora</a>
   </div>
 
