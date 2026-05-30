@@ -90,20 +90,21 @@
     }
     .hero-img {
       width: 100%; padding: 0 18px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .hero-img img {
       width: 100%; border-radius: 16px;
       box-shadow: 0 8px 32px rgba(43,15,168,0.14);
     }
-    .hero-copy { padding: 0 18px; }
+    .hero-copy { padding: 0 18px; margin-bottom: 20px; }
     .hero-headline {
       font-size: 26px; font-weight: 900;
       color: var(--navy); line-height: 1.18;
       margin-bottom: 16px;
     }
     .hero-sub  { font-size: 15px; color: #444; line-height: 1.75; margin-bottom: 10px; }
-    .hero-sub2 { font-size: 15px; color: #222; font-weight: 700; margin-bottom: 24px; }
+    .hero-sub2 { font-size: 15px; color: #222; font-weight: 700; }
+    .hero-cta  { padding: 0 18px; }
     .hero-trust { font-size: 12px; color: #999; text-align: center; margin-top: 12px; }
 
     /* ════════════════════════════
@@ -372,9 +373,10 @@
     @media (min-width: 640px) {
       .wrap { max-width: 720px; padding: 0 32px; }
       .hero { padding: 52px 0 52px; }
-      .hero-inner { display: flex; align-items: center; gap: 40px; padding: 0 32px; }
-      .hero-img { flex: 0 0 280px; padding: 0; margin-bottom: 0; }
-      .hero-copy { flex: 1; padding: 0; }
+      .hero-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 32px; padding: 0 32px; }
+      .hero-img  { flex: 0 0 280px; padding: 0; margin-bottom: 0; order: 1; }
+      .hero-copy { flex: 1; min-width: 260px; padding: 0; margin-bottom: 0; order: 2; }
+      .hero-cta  { flex: 1 0 100%; padding: 0; order: 3; }
       .hero-headline { font-size: 34px; }
       .not-is-grid { flex-direction: row; }
       .not-is-grid .not-box { flex: 1; }
@@ -400,15 +402,17 @@
       <p class="hero-pre">Chega de resolver a madrugada no susto</p>
     </div>
     <div class="hero-inner">
-      <div class="hero-img">
-        <img src="Modelo_página/imagens/img3.jpg" alt="Das Noites em Caos às Noites em Paz — Método Noites em Paz 3R">
-      </div>
       <div class="hero-copy">
         <h1 class="hero-headline">
           Seu bebê acorda várias vezes à noite e você já tentou de tudo, mas ainda não sabe o que fazer quando a madrugada vira caos.
         </h1>
         <p class="hero-sub">Um guia prático para mães de bebês de 0 a 2 anos pararem de tentar tudo no desespero e começarem a seguir o Método Noites em Paz 3R™.</p>
         <p class="hero-sub2">O problema não é falta de amor. É tentar resolver a madrugada quando ela já virou caos.</p>
+      </div>
+      <div class="hero-img">
+        <img src="Modelo_página/imagens/img3.jpg" alt="Das Noites em Caos às Noites em Paz — Método Noites em Paz 3R">
+      </div>
+      <div class="hero-cta">
         <a href="#LINK_DO_CHECKOUT" class="btn">Quero Sair do Improviso Agora</a>
         <p class="hero-trust">Acesso imediato &nbsp;•&nbsp; garantia de 7 dias &nbsp;•&nbsp; conteúdo educativo</p>
       </div>
